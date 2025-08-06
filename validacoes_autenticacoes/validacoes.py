@@ -43,22 +43,22 @@ def validar_email():
 
 def validar_documento():
     while True:
-        tipo = input("[1]CPF-[2]RG-[3]CNH")
+        tipo = input("[1]CPF-[2]RG-[3]CNH ")
         numero = input("Nº do documento: ").strip().replace(
             ".", "").replace("-", "").replace(" ", "")
         if tipo == "1":
             if numero.isdigit() and len(numero) == 11:
-                return tipo, numero
+                return numero
             else:
                 print("Erro: CPF deve conter 11 dígitos.")
         elif tipo == "2":
             if numero.isdigit() and 7 <= len(numero) == 9:
-                return tipo, numero
+                return numero
             else:
                 print("Erro: RG deve conter entre 7 e 9 dígitos.")
         elif tipo == "3":
             if numero.isdigit() and len(numero) == 11:
-                return tipo, numero
+                return numero
             else:
                 print("Erro: CNH deve conter 11 dígitos:")
         else:
@@ -74,31 +74,71 @@ def validar_renavam():
     else:
         print("O Renavam deve conter 11 digítos!")
 
-# função que vai validar o pagamento conforme a forma que for selecionada
+# função para informar o modelo de direção do veiculo
 
 
-def validar_pagamento(ValorAluguel):
+def solicitar_direcao():
     while True:
-        opcao = input("[1] Pix [2]Débito [3]Crédito [4] Dinheiro")
+        print("\nInforme a direção do veículo:")
+        print("[1] Manual")
+        print("[2] Hidráulica")
+        print("[3] Semi-hidráulica")
+
+        opcao = input("Escolha uma opção (1/2/3): ").strip()
 
         if opcao == "1":
-            print("Chave pix: 000.000.000-12")
-            valorPago = input("informe o valor pago por PIX: ")
-            return ("pix", valorPago)
+            return "Manual"
         elif opcao == "2":
-            print("Inserir cartao!")
-            valorPago = input("Informe o valor pago no débito: ")
-            return ("Débito: ", valorPago)
+            return "Hidráulica"
         elif opcao == "3":
-            parcela = input("[1] À vista [2] 2x [3] 3x")
-            if parcela = =="1":
-                valorPago = input("Valor: ")
-            elif parcela == "2":
-                valorPago = valorAluguel / 2
-            elif parcela == "3":
-                valorPago = valorAlugel / 3
-            else:
-                print("Opção inválida")
-        elif opcao == "4":
-            troco = valorPago - valorAluguel
-            print(f"Troco = R${troco}")
+            return "Semi-hidráulica"
+        else:
+            print("Opção inválida. Tente novamente.")
+
+# funçãp para informar a situação dos pneus
+
+
+def informe_pneus():
+    print("informe a situação dos pneus [1]Bom [2]Ruim [3]Meia-vida")
+    opcao = input("Escolha uma opção ( 1/ 2 / 3 )")
+    if opcao == '1':
+        return "Bom"
+    elif opcao == '2':
+        return "Ruim"
+    elif opcao == '3':
+        return "Meia-vida"
+    else:
+        print("Opção inválida, tente novamente.")
+
+# função para o tipo de combustivel
+
+
+def tipo_combustivel():
+    print("\n Informe o tipo de combutível ")
+    print("[1] Álcool [2] Gásolina [3] Fléx")
+    opcao = input("Escolha uma opção ( 1/ 2 / 3 )")
+
+    if opcao == '1':
+        return "Álcool"
+    elif opcao == '2':
+        return "Gasolina"
+    elif opcao == '3':
+        return "Fléx"
+    else:
+        print("Opção inválida, tente novamente.")
+
+# função para a opção de genero
+
+
+def genero():
+    opcao = input("Qual o genêro: [M]asculino [F]emino ".strip().lower())
+    if opcao == 'm':
+        return "masculino"
+    elif opcao == "f":
+        return "feminino"
+    else:
+        outro = input("Descreva: ").strip()
+        return outro
+
+
+# função que vai validar o pagamento conforme a forma que for selecionada

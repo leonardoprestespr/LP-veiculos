@@ -1,7 +1,7 @@
 
 from banco.conexao import banco, closeBanco
-from pagamentos.registroPagamento import opcoes_pagamento
-from main import menu
+# from pagamentos.registroPagamento import opcoes_pagamento
+# from main import menu
 
 
 def verificar_cliente(con, id_cliente):
